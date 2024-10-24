@@ -14,7 +14,8 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
-
+    'weather_key' => env('WEATHER_KEY', ''),
+    'weather_url' => env('WEATHER_URL', ''),
     /*
     |--------------------------------------------------------------------------
     | Application Environment
