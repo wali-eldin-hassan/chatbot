@@ -43,3 +43,13 @@ $botman->receivesImages(function ($bot, $images) {
     $image = $images[0];
     $bot->reply(OutgoingMessage::create('i received your image')->withAttachment($image));
 });
+
+$botman->receivesAudios(function ($bot, $audios) {
+    $audio = $audios[0];
+    $bot->reply(OutgoingMessage::create('i received your Audio')->withAttachment($audio));
+});
+
+$botman->receivesVedios(function ($bot, $videos) {
+    $video = $videos[0];
+    $bot->reply(OutgoingMessage::create('i received your video')->withAttachment($video));
+});
