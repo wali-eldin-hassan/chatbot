@@ -1,11 +1,13 @@
 <?php
 
+use BotMan\BotMan\Messages\Outgoing\OutgoingMessage;
+
 $botman = resolve('botman');
 
 $botman->fallback(function ($bot) {
     $userMessage = $bot->getMessage()->getText();
 
-    $bot->reply("Sorry, I didn't understand: \"$userMessage\". You can ask me about the weather by saying, for example: 'weather in paris'.");
+    $bot->reply("Sorry, I didn't understand: \"$userMessage\". You can ask me about the weather by saying, for example: 'weather in paris'. you can also attach images");
 });
 
 $botman->hears('weather in {location}', function ($bot, $location) {
@@ -35,4 +37,9 @@ $botman->hears('say my name', function ($bot) {
     $name = $bot->userStorage()->get('name');
 
     $bot->reply('your name is' . ' ' . $name);
+});
+
+$botman->receivesImages(function ($bot, $images) {
+    $image = $images[0];
+    $bot->reply(OutgoingMessage::create('i received your image')->withAttachment($image));
 });
